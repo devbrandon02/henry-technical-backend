@@ -6,24 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Course = void 0;
 const typeorm_1 = require("typeorm");
-let User = class User {
+let Course = class Course {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)()
-], User.prototype, "id", void 0);
+], Course.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)()
-], User.prototype, "firstName", void 0);
+], Course.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)()
-], User.prototype, "lastName", void 0);
+], Course.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)()
-], User.prototype, "age", void 0);
-User = __decorate([
+], Course.prototype, "image", void 0);
+__decorate([
+    (0, typeorm_1.Column)()
+], Course.prototype, "ranking", void 0);
+Course = __decorate([
     (0, typeorm_1.Entity)()
-], User);
-exports.User = User;
+], Course);
+exports.Course = Course;
 //# sourceMappingURL=Course.js.map

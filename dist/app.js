@@ -5,13 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
+const index_1 = require("./routes/index");
+const database_1 = __importDefault(require("./database"));
+const body_parser_1 = __importDefault(require("body-parser"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
-app.get('/', (req, res) => {
-    res.send('Express + TypeScript Server');
-});
+dotenv_1.default.config();
+// create application/json parser
+app.use(body_parser_1.default.json());
+app.use(body_parser_1.default.urlencoded({ extended: false }));
+// INIT CONNECTION DATABASES - MONGODB
+(0, database_1.default)();
+// INIT ROUTES APP
+app.use("/api/v1", index_1.routes);
+// INIT SERVER APP
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=app.js.map
