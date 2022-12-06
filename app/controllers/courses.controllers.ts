@@ -51,7 +51,8 @@ const createCourse = async (req: Request, res: Response) => {
     difficulty: body.difficulty,
     id_instructor: body.id_instructor,
     ranking: body.ranking,
-    status: body.status
+    status: body.status,
+    imageUrl: body.imageUrl
   })
 
   try {

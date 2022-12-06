@@ -10,6 +10,15 @@ export interface ICourse {
   imageUrl: string
 }
 
+export interface ILesson {
+  id: number
+  id_instructor: string
+  id_course: string
+  title: string,
+  description: string
+  videoUrl: string
+}
+
 
 
 export interface IGetAllCourseRequest {

@@ -1,8 +1,13 @@
-import * as models from "../models"
+import Courses from "../models/courses.model"
+import Lessons from "../models/lesson.model"
 import makeCourseDb from "./courses.db"
+import makeLessonDb from "./lessons.db"
 
-const coursesDb = makeCourseDb(models)
+const coursesDb = makeCourseDb()
+const LessonsDb = makeLessonDb()
+
 
 export {
-  coursesDb
+  coursesDb,
+  LessonsDb
 }

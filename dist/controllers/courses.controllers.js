@@ -14,16 +14,33 @@ const models_1 = require("../models");
 // TODO: SWAGGER
 const getAllCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { category } = req.query;
-    console.log("Category", category);
+    let { status } = req.query;
     try {
-        let response = yield data_access_1.coursesDb.find({ category: category || '' }, {});
-        console.log("response", response);
+        let response = yield data_access_1.coursesDb.find(category ? { category } : {}, {});
+        if (status) {
+            response = response.filter((course) => {
+                return course.status === status;
+            });
+        }
+        if (response.length < 1) {
+            return res.status(404).json({
+                ok: false,
+                response,
+                message: "There are no registered courses"
+            });
+        }
+        return res.status(200).json({
+            ok: true,
+            data: response
+        });
     }
-    catch (error) {
+    catch (err) {
+        console.error("@courses.controllers.ts", err);
+        return res.json({
+            ok: false,
+            err: err
+        });
     }
-    return res.json({
-        message: 'hola'
-    });
 });
 // TODO: SWAGGER
 const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
